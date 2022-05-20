@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* -----------navbar ------------------*/
+      #navbar{
+            border: 1px solid black;
+            height: 100px;
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            
+        }
+        #navbar>div{
+            display: flex;
+            width: 200px;
+            /* border: 1px solid black; */
+            gap: 30px;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 50px;
+        }    
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        /* ------------------------------main--------------------- */
+        #main{
+            margin-top: 50px;
+            margin-left: 40%;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            width: 200px;
+            padding: 20px 50px 20px 50px;
+            justify-content: center;
+            text-align: center;
+        }
+        #submit{
+            background-color: #008080;
+            border-radius: 5px;
+            border: 0px;
+            padding: 5px 30px 5px 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+     <!--------------------------------- navbar ---------------------------------->
+     <div id="navbar">
+        <div> 
+            <a href="index.html">Home</a>
+            <a href="">SignUp</a>
+            <a href="Login.html">LogIn</a>
+        </div>
+    </div>
+    <!------------------------------- main content ----------------------------------->
+
+    <div id="main">
+        <h1>SignUp</h1>
+        <form id="form">
+            
+            <input type="text" name="" id="name" placeholder="Name" required/><br>
+            
+            <br><input type="tel" name="" id="mob" placeholder="Mobile" required/><br>
+            
+            <br><input type="email" name="" id="email" placeholder="Email" required/><br>
+            
+            <br><input type="password" name="" id="password" placeholder="Password" required/><br>
+
+            <br><input type="submit" name="" id="submit" required/>
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+    userData=JSON.parse(localStorage.getItem('userData')) || []
+    document.querySelector('#form').addEventListener('submit',submitForm)
+    function submitForm(){
+        event.preventDefault()
+        let signupData={
+            name: document.getElementById('name').value,
+            mobile: document.getElementById('mob').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value 
+        }
+        userData.push(signupData)
+        window.location.href='Login.html'
+        console.log(userData)
+        localStorage.setItem('userData', JSON.stringify(userData))
+    }
+    
+</script>

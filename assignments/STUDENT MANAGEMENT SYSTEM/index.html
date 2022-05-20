@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        #navbar{
+            height: 100px;
+            border:  1px solid darkblue;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-------------------------------- navbar ----------------------------------------->
+
+    <div id="navbar">
+
+    </div>
+
+    <!----------------------------------- form ---------------------------------------->
+    <div id="container">
+        <form id="form">
+                <label>Name : </label>
+                <input type="text" id="name" placeholder="Name" required/>
+                <label>Course : </label>
+                <input type="text" id="course" placeholder="Course" required/>
+                <label>Unit : </label>
+                <input type="text" id="unit" placeholder="Unit" required/>
+                <label>Image : </label>
+                <input type="text" id="image" placeholder="Image" required/>
+                <label>Batch : </label>
+                <input type="text" id="batch" placeholder="Batch" required/>
+                <input type="submit" id="submit"/>
+        </form>
+    </div>
+</body>
+</html>
+<script>
+
+        studentData= JSON.parse(localStorage.getItem('masaiStudent')) || []
+        document.querySelector('#form').addEventListener('submit',submitStudent)
+            let navbar=document.getElementById('navbar') 
+            let numberOfstudent=studentData.length
+            navbar.append(`web 17 | ${numberOfstudent}`)
+        function submitStudent(){
+
+            event.preventDefault()
+            let masaiStudent={
+                    name : document.getElementById('name').value,
+                    course : document.getElementById('course').value,
+                    unit : document.getElementById('unit').value,
+                    image : document.getElementById('image').value,
+                    batch : document.getElementById('batch').value,
+            } 
+            studentData.push(masaiStudent)
+            console.log(masaiStudent)
+            localStorage.setItem('masaiStudent',JSON.stringify(studentData))
+            
+            document.getElementById('name').value=null
+            document.getElementById('course').value=null
+            document.getElementById('unit').value=null
+            document.getElementById('image').value=null
+            document.getElementById('batch').value=null
+            
+        }
+       
+
+</script>
